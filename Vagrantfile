@@ -3,17 +3,13 @@
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
-STORM_VERSION = "storm-0.9.1-incubating-SNAPSHOT"
+STORM_VERSION = "apache-storm-1.0.2"
 STORM_ARCHIVE = "#{STORM_VERSION}.zip"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
   config.hostmanager.manage_host = true
   config.hostmanager.enabled = true
-  
-  if(!File.exist?(STORM_ARCHIVE))
-    `wget -N https://dl.dropboxusercontent.com/s/dj86w8ojecgsam7/storm-0.9.0.1.zip`
-  end
   
   config.vm.define "zookeeper" do |zookeeper|
     zookeeper.vm.box = "precise32"
